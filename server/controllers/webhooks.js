@@ -8,21 +8,15 @@ export const clerkWebhooks = async (req, res) => {
     //create a svix instance with clerk webhook secret.
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
-    // Obtain raw payload (express.raw provides Buffer)
-    const payload =
-      typeof req.body === "string" ? req.body : req.body.toString();
-
     //verify headers using raw payload string
-    await whook.verify(payload, {
+    await whook.verify(JSON.stringify(req.body), {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"],
     });
 
-    // Parse payload into JSON and get event data
-    const parsed = JSON.parse(payload);
-    const { data, type } = parsed;
-    console.log("[webhook] event type:", type);
+    //getting data from request body
+    const {data, type} = req.body;
 
     //Switch case for differnt Events
     switch (type) {
@@ -34,8 +28,7 @@ export const clerkWebhooks = async (req, res) => {
           image: data.image_url,
           resume: " ",
         };
-        const created = await User.create(userData);
-        console.log("[webhook] created user:", created._id);
+        await User.create(userData);
         res.json({});
         break;
       }
@@ -45,14 +38,12 @@ export const clerkWebhooks = async (req, res) => {
           name: data.first_name + " " + data.last_name,
           image: data.image_url,
         };
-        const updated = await User.findByIdAndUpdate(data.id, userData);
-        console.log("[webhook] updated user:", data.id);
+        await User.findByIdAndUpdate(data.id, userData)
         res.json({});
         break;
       }
       case "user.deleted": {
-        const deleted = await User.findByIdAndDelete(data.id);
-        console.log("[webhook] deleted user:", data.id);
+        await User.findByIdAndDelete(data.id);
         res.json({});
         break;
       }
