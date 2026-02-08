@@ -5,6 +5,7 @@ A modern, full-stack job portal application built with the MERN stack (MongoDB, 
 ## 🌟 Features
 
 ### Job Seeker Features
+
 - **User Authentication**: Secure login and registration using Clerk
 - **Browse Jobs**: Search and filter through available job listings
 - **Apply for Jobs**: Submit job applications with a single click
@@ -12,6 +13,7 @@ A modern, full-stack job portal application built with the MERN stack (MongoDB, 
 - **Profile Management**: Manage user profile and preferences
 
 ### Recruiter Features
+
 - **Post Jobs**: Create and publish new job listings
 - **Manage Jobs**: Edit, update, and delete job postings
 - **View Applications**: Review all applications received for posted jobs
@@ -19,6 +21,7 @@ A modern, full-stack job portal application built with the MERN stack (MongoDB, 
 - **Dashboard**: Get insights into job postings and applications
 
 ### General Features
+
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Error Tracking**: Integrated Sentry for real-time error monitoring
 - **Toast Notifications**: Real-time user feedback for actions
@@ -28,6 +31,7 @@ A modern, full-stack job portal application built with the MERN stack (MongoDB, 
 ## 🛠️ Tech Stack
 
 ### Client (Frontend)
+
 - **React 19** - UI library
 - **Vite** - Build tool and development server
 - **React Router DOM** - Client-side routing
@@ -39,6 +43,7 @@ A modern, full-stack job portal application built with the MERN stack (MongoDB, 
 - **ESLint** - Code linting
 
 ### Server (Backend)
+
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web framework
 - **MongoDB** - NoSQL database
@@ -105,6 +110,7 @@ Job-Portal/
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - **Node.js** (v18+)
 - **npm** or **yarn**
 - **MongoDB** (local or Atlas account)
@@ -133,6 +139,7 @@ echo > .env
 ```
 
 **Configure `.env` file:**
+
 ```env
 # Database
 MONGODB_URI=your_mongodb_connection_string
@@ -167,6 +174,7 @@ touch .env.local
 ```
 
 **Configure `.env.local` file:**
+
 ```env
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 VITE_API_URL=http://localhost:5000
@@ -177,22 +185,27 @@ VITE_API_URL=http://localhost:5000
 ### Development Mode
 
 **Terminal 1 - Start Backend Server:**
+
 ```bash
 cd server
 npm run server
 ```
+
 The server will run on `http://localhost:5000`
 
 **Terminal 2 - Start Frontend Application:**
+
 ```bash
 cd client
 npm run dev
 ```
+
 The application will run on `http://localhost:5173`
 
 ### Production Build
 
 **Build Frontend:**
+
 ```bash
 cd client
 npm run build
@@ -200,6 +213,7 @@ npm run preview
 ```
 
 **Build Backend:**
+
 ```bash
 cd server
 npm start
@@ -236,7 +250,7 @@ The server provides the following main endpoints:
 - `POST /webhooks` - Clerk webhook endpoint for user events
 - `GET /debug-sentry` - Sentry debug endpoint (development only)
 
-*Additional endpoints for jobs, applications, and users are being developed.*
+_Additional endpoints for jobs, applications, and users are being developed._
 
 ## 📱 Pages & Components Flow
 
@@ -275,6 +289,7 @@ This project is open source and available under the ISC License.
 ## 📧 Contact & Support
 
 For support, please reach out through:
+
 - GitHub Issues: [GitHub Repository](https://github.com/MdTohidReza/Job-Portal/issues)
 - Email: [Your Email Here]
 
