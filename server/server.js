@@ -5,6 +5,7 @@ import express from "express";
 import connectDB from "./config/db.js";
 import "./config/instrument.js";
 import { clerkWebhooks } from "./controllers/webhooks.js";
+import companyRoutes from "./routes/companyRoutes.js";
 
 // Initialize express app
 const app = express();
@@ -27,6 +28,7 @@ app.get("/debug-sentry", function mainHandler(req, res) {
 });
 
 app.post("/webhooks", clerkWebhooks);
+app.use("/api/company", companyRoutes);
 
 // Port
 const PORT = process.env.PORT || 5000;
