@@ -6,12 +6,14 @@ import connectDB from "./config/db.js";
 import "./config/instrument.js";
 import { clerkWebhooks } from "./controllers/webhooks.js";
 import companyRoutes from "./routes/companyRoutes.js";
+import connectCloudnary from "./config/cloudnary.js";
 
 // Initialize express app
 const app = express();
 
 //connection to database
 await connectDB();
+await connectCloudnary();
 
 // Middlewares
 app.use(cors());
